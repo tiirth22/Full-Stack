@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Viewer</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-terminal"></i> Log Viewer</h1>
+            <div class="controls">
+                <div class="file-selector">
+                    <label for="logFile">Select Log File:</label>
+                    <select id="logFile" onchange="window.location.href='/logs/' + this.value">
+                        <option value="">-- Select a log file --</option>
+                        <% logFiles.forEach(function(file) { %>
+                            <option value="<%= file %>" <%= currentFile !== null && currentFile === file ? 'selected' : '' %>><%= file %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <button id="refreshBtn" onclick="window.location.reload()" title="Refresh">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="log-container">
+            <% if (typeof logContent !== 'undefined') { %>
+                <div class="log-header">
+                    <h2><%= currentFile %></h2>
+                    <div class="log-actions">
+                        <button id="copyBtn" title="Copy to clipboard">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                        <button id="downloadBtn" title="Download log file">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                <div class="log-content" id="logContent">
+                    <% logContent.forEach(function(line, index) { 
+                        let lineClass = '';
+                        if (line.includes('ERROR')) lineClass = 'error';
+                        else if (line.includes('WARN')) lineClass = 'warn';
+                        else if (line.includes('INFO')) lineClass = 'info';
+                        else if (line.includes('DEBUG')) lineClass = 'debug';
+                    %>
+                        <div class="log-line <%= lineClass %>">
+                            <span class="line-number"><%= index + 1 %></span>
+                            <span class="line-content"><%= line %></span>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <div class="welcome-message">
+                    <i class="fas fa-file-alt"></i>
+                    <h2>Welcome to Log Viewer</h2>
+                    <p>Select a log file from the dropdown to view its contents.</p>
+                    <p>Logs directory: <code>./logs/</code></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        // Copy to clipboard functionality
+        document.getElementById('copyBtn')?.addEventListener('click', async () => {
+            const content = document.getElementById('logContent').textContent;
+            try {
+                await navigator.clipboard.writeText(content);
+                alert('Log content copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy to clipboard');
+            }
+        });
+
+        // Download log file
+        document.getElementById('downloadBtn')?.addEventListener('click', () => {
+            const content = document.getElementById('logContent').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '<%= currentFile %>';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>

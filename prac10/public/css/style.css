@@ -1,0 +1,318 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --code-bg: #f8f9fa;
+    --line-number-color: #6c757d;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+    --code-bg: #2d2d2d;
+    --light-color: #2d2d2d;
+    --line-number-color: #888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    font-size: 24px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.file-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select, button {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+select:focus, button:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--light-color);
+}
+
+button:hover {
+    background-color: var(--border-color);
+}
+
+/* Log container */
+.log-container {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: var(--light-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.log-header h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 500;
+    font-family: 'Source Code Pro', monospace;
+    color: var(--text-color);
+}
+
+.log-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.log-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    background-color: var(--code-bg);
+}
+
+.log-line {
+    display: flex;
+    padding: 2px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.1s;
+}
+
+.log-line:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.line-number {
+    color: var(--line-number-color);
+    min-width: 40px;
+    text-align: right;
+    padding-right: 10px;
+    user-select: none;
+    opacity: 0.7;
+}
+
+.line-content {
+    flex: 1;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Log level colors */
+.error { color: #e74c3c; }
+.warn { color: #f39c12; }
+.info { color: #3498db; }
+.debug { color: #7f8c8d; }
+
+/* Welcome message */
+.welcome-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-color);
+}
+
+.welcome-message i {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.welcome-message h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.welcome-message p {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+/* Error page */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-icon {
+    font-size: 64px;
+    color: var(--danger-color);
+    margin-bottom: 20px;
+}
+
+.error-details {
+    margin: 20px 0;
+    text-align: left;
+    background-color: var(--code-bg);
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid var(--danger-color);
+}
+
+.error-stack {
+    margin-top: 15px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .controls {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .file-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    .log-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .log-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

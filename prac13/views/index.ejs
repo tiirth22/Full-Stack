@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tax Calculator</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Income Calculator</h1>
+    <p>Enter your income from two different sources to calculate the total.</p>
+    
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/calculate" method="POST">
+      <div class="form-group">
+        <label for="income1">Income from Source 1:</label>
+        <input type="text" id="income1" name="income1" required>
+      </div>
+      <div class="form-group">
+        <label for="income2">Income from Source 2:</label>
+        <input type="text" id="income2" name="income2" required>
+      </div>
+      <button type="submit">Calculate Total</button>
+    </form>
+  </div>
+</body>
+</html>
