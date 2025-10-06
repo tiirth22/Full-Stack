@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            text-align: center;
+            margin-top: 60px;
+        }
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .poll-buttons {
+            margin-bottom: 30px;
+        }
+        .poll-buttons button {
+            font-size: 1em;
+            padding: 10px 24px;
+            margin: 0 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .poll-buttons button:hover {
+            background: #f0f0f0;
+        }
+        .results {
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .results div {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vote for Your Favorite Language</h1>
+    <div class="poll-buttons">
+        <button onclick="vote('JavaScript')">JavaScript</button>
+        <button onclick="vote('Python')">Python</button>
+        <button onclick="vote('Java')">Java</button>
+    </div>
+    <div class="results">
+        <div>JavaScript: <span id="js-votes">0</span></div>
+        <div>Python: <span id="py-votes">0</span></div>
+        <div>Java: <span id="java-votes">0</span></div>
+    </div>
+    <script>
+        // Votes object to keep track of counts
+        const votes = {
+            JavaScript: 0,
+            Python: 0,
+            Java: 0
+        };
+
+        // Update the UI with current votes
+        function updateVotes() {
+            document.getElementById('js-votes').textContent = votes.JavaScript;
+            document.getElementById('py-votes').textContent = votes.Python;
+            document.getElementById('java-votes').textContent = votes.Java;
+        }
+
+        // Handle user voting
+        function vote(language) {
+            votes[language]++;
+            updateVotes();
+        }
+
+        // Simulate real-time voting from other users
+        setInterval(() => {
+            // Randomly pick a language to increment
+            const langs = Object.keys(votes);
+            const randomLang = langs[Math.floor(Math.random() * langs.length)];
+            votes[randomLang]++;
+            updateVotes();
+        }, 2000);
+
+        // Initial update
+        updateVotes();
+    </script>
+</body>
+</html>
