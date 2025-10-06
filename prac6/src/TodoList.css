@@ -1,0 +1,125 @@
+.todo-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px 24px 24px;
+}
+.todo-container h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #2d3a4b;
+}
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.todo-priority-select {
+  padding: 8px 12px;
+  border: 1px solid #bfc9d1;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #f7f9fa;
+  color: #2d3a4b;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #bfc9d1;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.todo-add-btn {
+  padding: 8px 16px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.todo-add-btn:hover {
+  background: #125ea2;
+}
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-item {
+  color: #111;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 16px;
+}
+
+.priority-high {
+  color: #111 !important;
+  background: #e53935;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: bold;
+}
+.priority-medium {
+  color: #111 !important;
+  background: #ffeb3b;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: bold;
+}
+.priority-less {
+  color: #111 !important;
+  background: #43a047;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: bold;
+}
+
+.priority-label {
+  margin-left: 12px;
+  margin-right: 18px;
+  font-size: 0.92em;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.priority-high {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #e53935;
+}
+.priority-medium {
+  background: #fffde7;
+  color: #f9a825;
+  border: 1px solid #fbc02d;
+}
+.priority-less {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #64b5f6;
+}
+
+.todo-delete-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.todo-delete-btn:hover {
+  background: #ab2321;
+}
