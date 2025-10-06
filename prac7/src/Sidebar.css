@@ -1,0 +1,111 @@
+.sidebar {
+  width: 230px;
+  background: #f4f6fb;
+  color: #222b45;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: width 0.3s, background 0.3s, color 0.3s;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.05);
+  z-index: 10;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar.dark {
+  background: #23272f;
+  color: #f7f7f7;
+}
+.sidebar.open {
+  width: 230px;
+}
+.sidebar:not(.open) {
+  width: 60px;
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 16px 10px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.sidebar.dark .sidebar-header {
+  border-bottom: 1px solid #333;
+}
+.sidebar-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+  margin-right: 8px;
+}
+.sidebar-darkmode {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+}
+.sidebar-search {
+  margin: 14px 16px 10px 16px;
+  padding: 7px 12px;
+  width: calc(100% - 32px);
+  border: 1px solid #d0d7e2;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  color: #222b45;
+  outline: none;
+  transition: background 0.3s, color 0.3s;
+}
+.sidebar.dark .sidebar-search {
+  background: #23272f;
+  color: #f7f7f7;
+  border: 1px solid #444;
+}
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1rem;
+  border-left: 4px solid transparent;
+}
+.sidebar-item.active, .sidebar-item:hover {
+  background: #e3e8f0;
+  color: #1976d2;
+  border-left: 4px solid #1976d2;
+}
+.sidebar.dark .sidebar-item.active, .sidebar.dark .sidebar-item:hover {
+  background: #323946;
+  color: #ffd600;
+  border-left: 4px solid #ffd600;
+}
+.sidebar-icon {
+  margin-right: 12px;
+  font-size: 1.3rem;
+}
+.sidebar-label {
+  flex: 1;
+}
+.sidebar-item.empty {
+  color: #bbb;
+  background: none;
+  cursor: default;
+  border-left: none;
+}
