@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/netflix-favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Netflix Clone...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="assets/netflix-logo.png" alt="Netflix" class="nav-logo">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#" class="nav-link">TV Shows</a></li>
+                    <li><a href="#" class="nav-link">Movies</a></li>
+                    <li><a href="#" class="nav-link">New &amp; Popular</a></li>
+                    <li><a href="#" class="nav-link">My List</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <button type="button" class="search-btn" id="search-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <input type="text" class="search-input" id="search-input" placeholder="Search movies, TV shows...">
+                </div>
+                <div class="notifications">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 8A6 6 0 0 0 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.73 21A2 2 0 0 1 10.27 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="profile-menu">
+                    <img src="assets/profile-avatar.png" alt="Profile" class="profile-avatar">
+                    <div class="dropdown-arrow">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-banner" id="hero-banner">
+            <div class="banner-content">
+                <h1 class="banner-title" id="banner-title">Loading...</h1>
+                <p class="banner-description" id="banner-description">Loading...</p>
+                <div class="banner-buttons">
+                    <button type="button" class="btn btn-primary" id="play-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+                        </svg>
+                        Play
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="info-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        More Info
+                    </button>
+                </div>
+            </div>
+            <div class="banner-fade"></div>
+        </section>
+
+        <!-- Content Rows -->
+        <section class="content-rows" id="content-rows">
+            <!-- Trending Now -->
+            <div class="row" id="trending-row">
+                <h2 class="row-title">Trending Now</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="trending-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" id="popular-movies-row">
+                <h2 class="row-title">Popular Movies</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="popular-movies-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Rated Movies -->
+            <div class="row" id="top-rated-movies-row">
+                <h2 class="row-title">Top Rated Movies</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="top-rated-movies-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Popular TV Shows -->
+            <div class="row" id="popular-tv-row">
+                <h2 class="row-title">Popular TV Shows</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="popular-tv-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Movies -->
+            <div class="row" id="action-movies-row">
+                <h2 class="row-title">Action Movies</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="action-movies-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comedy Movies -->
+            <div class="row" id="comedy-movies-row">
+                <h2 class="row-title">Comedy Movies</h2>
+                <div class="row-container">
+                    <button type="button" class="row-nav prev-btn" data-direction="prev" aria-label="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="row-content" id="comedy-movies-content">
+                        <!-- Content cards will be populated here -->
+                    </div>
+                    <button type="button" class="row-nav next-btn" data-direction="next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Trailer Modal -->
+    <div class="modal" id="trailer-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Close Modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="modal-video-container">
+                <iframe id="trailer-iframe" title="Movie Trailer" allowfullscreen></iframe>
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-title">Loading...</h3>
+                <p id="modal-description"></p>
+                <div class="modal-details">
+                    <span id="modal-rating"></span>
+                    <span id="modal-release-date"></span>
+                    <span id="modal-runtime"></span>
+                </div>
+                <div class="modal-genres" id="modal-genres"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Netflix Clone. Built for educational purposes using TMDB API.</p>
+            <p>This is not affiliated with Netflix Inc.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

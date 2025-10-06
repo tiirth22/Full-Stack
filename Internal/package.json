@@ -1,0 +1,20 @@
+{
+  "name": "netflix-clone",
+  "version": "1.0.0",
+  "description": "A Netflix clone web application built with HTML, CSS, and JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'Building for production...'",
+    "deploy": "firebase deploy"
+  },
+  "keywords": ["netflix", "streaming", "movies", "tv-shows", "tmdb"],
+  "author": "Krishil Agrawal",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
